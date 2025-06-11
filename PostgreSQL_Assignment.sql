@@ -1,3 +1,4 @@
+-- create Database
 CREATE DATABASE conservation_db;
 
 -- Table creation
