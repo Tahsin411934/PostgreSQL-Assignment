@@ -219,8 +219,7 @@ CREATE TABLE users (
 <details>
 <summary>How can you modify data using UPDATE statements?</summary>
 
-
-### `UPDATE` Statement কী?
+ `UPDATE` Statement কী?
 
 `UPDATE` হলো একটি SQL কমান্ড যা ডেটাবেজের নির্দিষ্ট টেবিলের এক বা একাধিক **রো-এর তথ্য পরিবর্তন (modify)** করতে ব্যবহার হয়।
 
