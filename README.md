@@ -85,3 +85,80 @@ CREATE TABLE employee_data.employees (
 
 PostgreSQL-এ স্কিমা ব্যবহার করলে ডেটাবেস আরও সংগঠিত, নিরাপদ, এবং পরিচালনায় সহজ হয়। এটি বড় প্রজেক্টের জন্য বিশেষভাবে গুরুত্বপূর্ণ।
 </details>
+
+
+<details>
+<summary>Explain the Primary Key and Foreign Key concepts in PostgreSQL.</summary>
+
+**Primary Key** হলো একটি কলাম (বা একাধিক কলামের সমন্বয়), যা টেবিলের প্রতিটি রেকর্ডকে অন্য রেকর্ড থেকে আলাদা (unique) করে। 
+
+###  বৈশিষ্ট্য:
+
+* প্রতিটি টেবিলে শুধুমাত্র একটি Primary Key থাকতে পারে।
+* এটি স্বয়ংক্রিয়ভাবে unique constraint এবং not null constraint আরোপ করে।
+
+###  উদাহরণ:
+
+```sql
+CREATE TABLE students (
+  student_id SERIAL PRIMARY KEY,
+  name TEXT,
+  email TEXT
+);
+```
+
+এখানে `student_id` হলো Primary Key। এটি প্রতিটি ছাত্রকে ইউনিকভাবে শনাক্ত করবে।
+
+---
+
+## **Foreign Key  কী?**
+
+Foreign Key হলো এমন একটি কলাম, যা অন্য টেবিলের Primary Key-কে রেফারেন্স করে। এটি দুইটি টেবিলের মধ্যে relationship তৈরি করে।
+
+### বৈশিষ্ট্য:
+
+* এটি ডেটাবেসে রেফারেনশিয়াল ইন্টেগ্রিটি নিশ্চিত করে। অর্থাৎ, রেফারেন্স করা মানটি অবশ্যই মূল টেবিলে থাকতে হবে।
+* Parent table-এর Primary Key-এর মান না থাকলে child table-এ সেটি ব্যবহার করা যাবে না।
+
+### উদাহরণ:
+
+```sql
+CREATE TABLE classes (
+  class_id SERIAL PRIMARY KEY,
+  class_name TEXT
+);
+
+CREATE TABLE students (
+  student_id SERIAL PRIMARY KEY,
+  name TEXT,
+  class_id INT,
+  FOREIGN KEY (class_id) REFERENCES classes(class_id)
+);
+```
+
+এখানে `students` টেবিলের `class_id` একটি Foreign Key, যা `classes` টেবিলের `class_id` কে রেফারেন্স করছে।
+
+
+##  Tabular পার্থক্য:
+
+| বিষয়                | Primary Key                           | Foreign Key                       |
+| ------------------- | ------------------------------------- | --------------------------------- |
+| উদ্দেশ্য            | প্রতিটি রেকর্ডকে ইউনিকভাবে শনাক্ত করা | টেবিলগুলোর মধ্যে সম্পর্ক তৈরি করা |
+| ইউনিক?              | হ্যাঁ, অবশ্যই ইউনিক                   | না, এটি ডুপ্লিকেট হতে পারে        |
+| NULL মান গ্রহণ করে? | না                                    | হ্যাঁ, করতে পারে                  |
+| টেবিলের সংখ্যা      | একটি টেবিলে ১টি মাত্র Primary Key     | একাধিক Foreign Key থাকতে পারে     |
+
+
+
+
+* **Primary Key** একটি টেবিলের প্রতিটি রেকর্ডকে অন্য রেকর্ড থেকে আলাদা (unique) করে। 
+* **Foreign Key** দুইটি টেবিলের মধ্যে সম্পর্ক স্থাপন করে এবং ডেটার সঠিকতা নিশ্চিত করে।
+
+
+</details>
+<details>
+<summary>What is PostgreSQL?</summary>
+</details>
+<details>
+<summary>What is PostgreSQL?</summary>
+</details>
